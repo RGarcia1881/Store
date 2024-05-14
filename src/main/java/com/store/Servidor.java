@@ -7,11 +7,11 @@ public class Servidor {
 
     public static void main(String[] args) {
 
-        //// Generamos el try cathc en caso de error.
+        // Generamos el try cathc en caso de error.
         try {
 
             // Creamos el socket y lo ligamos al puerto 1234.
-            ServerSocket s = new ServerSocket(1234);
+            ServerSocket s = new ServerSocket(6030);
             System.out.println("Esperando cliente ...");
 
             // Hacemos un ciclo infinito dentro del cual el servidor va a esperar la
