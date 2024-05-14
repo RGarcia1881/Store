@@ -2,6 +2,7 @@ package com.store;
 
 import java.io.*;
 import java.net.*;
+import java.util.List;
 
 //172.100.64.82
 
@@ -18,12 +19,24 @@ public class Cliente {
             int pto = Integer.parseInt(br1.readLine());
 
             // Establecer conexión con el servidor y recibimos mensajes
+            try (Socket cl = new Socket(host, pto);
+                ObjectInputStream ois = new ObjectInputStream(cl.getInputStream())) {
 
-            //Termina de conectar esto con algo simple.
+                // Recibir la lista serializada del servidor
+                Object obj = ois.readObject();
 
-            Socket cl = new Socket(host, pto);
+                // Convertir el objeto recibido a una lista de productos
+                List<Product> productos = (List<Product>) obj;
 
-            cl.getInputStream()
+                // Imprimir el contenido de la lista de productos
+                System.out.println("Lista de productos recibida del servidor:");
+                for (Product producto : productos) {
+                    System.out.println(producto);
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                // Manejar cualquier excepción que pueda ocurrir al recibir o leer la lista
+                e.printStackTrace();
+            }
 
             /*
              * try (Socket cl = new Socket(host, pto);

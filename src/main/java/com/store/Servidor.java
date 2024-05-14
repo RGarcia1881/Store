@@ -25,10 +25,19 @@ public class Servidor {
                 // PrintWriter pw = new PrintWriter(new
                 // OutputStreamWriter(cl.getOutputStream()));
 
-                // Aqui empieza la serializacion
-
+                // Serializar lista de productos
                 List<Product> productos = ApiCart.obtenerProductos(ConnectionDB.getConnection());
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                oos.writeObject(productos);
+                oos.flush();
 
+                // Enviar lista serializada al cliente
+                OutputStream os = cl.getOutputStream();
+                os.write(baos.toByteArray());
+                os.flush();
+
+                // Imprimir la lista
                 for (Product producto : productos) {
                     System.out.println(producto);
                 }
@@ -62,11 +71,12 @@ public class Servidor {
                  * System.out.println("Mensaje del cliente: " + mensajeDelCliente);
                  * pw.println(mensajeDelCliente); // Hace echo del mensaje
                  * pw.flush();
-                 * 
-                 * // Cerramos el flujo.
-                 * pw.close();
-                 * cl.close();
                  */
+                // Cerrar conexiones y flujos
+                oos.close();
+                baos.close();
+                os.close();
+                cl.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
