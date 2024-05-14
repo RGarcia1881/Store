@@ -12,7 +12,7 @@ public class Cliente {
 
         try (BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in))) {
 
-            // Solicitar dirección del servidor
+            // Solicitar dirección del servidor asdasdasd
             System.out.println("Escriba la dirección del servidor: ");
             String host = br1.readLine();
             System.err.println("\n\nEscriba el puerto:");
