@@ -21,6 +21,12 @@ public class Main {
             
              /* Editar un producto existente
              ApiCart.editarProducto(connection, 1, "Mango", 15.75, 150, "Mango manila fresco");
+             System.out.println("Producto editado con éxito");
+             ApiCart.editarProducto(connection, 2, "Platano", 13.50, 100, "Amarillo amarillo platano");
+             System.out.println("Producto editado con éxito");
+             ApiCart.editarProducto(connection, 3, "Aguacate", 10.00, 120, "Aguacate hass fresco");
+             System.out.println("Producto editado con éxito");
+             ApiCart.editarProducto(connection, 4, "Doritos", 18.00, 200, "Doritos nacho sin abrir");
              System.out.println("Producto editado con éxito"); */
              
 
