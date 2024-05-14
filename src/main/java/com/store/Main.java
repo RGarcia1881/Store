@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Connection connection = null;
         Scanner scanner = new Scanner(System.in);
-
+        /* 
         try {
             // Establecer conexión
             connection = ConnectionDB.getConnection();
@@ -85,7 +85,7 @@ public class Main {
          */
 
         
-         * Cart cart = new Cart();
+         /* Cart cart = new Cart();
          * // Menú de opciones
          * int opcion;
          * do {
@@ -129,7 +129,7 @@ public class Main {
          * System.out.println("Conexion cerrada");
          * scanner.close();
          * }
-         */ }
+         */ 
     /*
      * #############################################################################
      * ###########
@@ -175,8 +175,9 @@ public class Main {
      * " no fue encontrado en la base de datos.");
      * }
      * }
-     * 
-     * // Método para ver el contenido del carrito
+     */
+        }
+     /* // Método para ver el contenido del carrito
      * private static void verContenidoDelCarrito(Cart cart) {
      * // Verificar si el carrito está vacío
      * if (cart.getItems().isEmpty()) {
@@ -225,7 +226,7 @@ public class Main {
      * 
      */
 
-    // Método para generar el PDF del ticket de compra
+    /* Método para generar el PDF del ticket de compra
     private static void generarPDFTicketCompra(Scanner scanner, Cart cart) {
         // Obtener el directorio actual donde se encuentra el archivo que contiene el
         // método main()
@@ -238,5 +239,6 @@ public class Main {
 
         // Generar el PDF del ticket de compra en el directorio actual
         cart.generateInvoice(filePath);
-    }
+    } */
 }
+

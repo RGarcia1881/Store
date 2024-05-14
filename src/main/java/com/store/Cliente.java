@@ -16,8 +16,9 @@ public class Cliente {
             // Solicitar dirección del servidor asdasdasd
             System.out.println("Escriba la dirección del servidor: ");
             String host = br1.readLine();
-            System.err.println("\n\nEscriba el puerto:");
+            System.err.println("\nEscriba el puerto:");
             int pto = Integer.parseInt(br1.readLine());
+            System.err.println("\n");
 
             // Establecer conexión con el servidor y recibimos mensajes
             try (Socket cl = new Socket(host, pto);
@@ -28,6 +29,12 @@ public class Cliente {
 
                 // Convertir el objeto recibido a una lista de productos
                 List<Product> productos = (List<Product>) obj;
+
+                // Guardar una copia del arreglo de existencias original
+                int[] existenciasOriginales = new int[productos.size()];
+                for (int i = 0; i < productos.size(); i++) {
+                    existenciasOriginales[i] = productos.get(i).getExistencias();
+                }
 
                 // Imprimir el contenido de la lista de productos
                 /*
@@ -45,7 +52,7 @@ public class Cliente {
 
                 do {
 
-                    System.out.println("Lista de productos recibida del servidor:");
+                    System.out.println("#####################    Lista de productos recibida del servidor    #####################\n");
                     for (Product producto : productos) {
                         System.out.println(producto);
                     }
@@ -57,7 +64,7 @@ public class Cliente {
                     System.out.println("3. Eliminar producto del carrito");
                     System.out.println("4. Vaciar carrito");
                     System.out.println("5. Pagar y generar ticket de compra");
-                    System.out.println("6. Salir");
+                    System.out.println("6. Salir\n");
 
                     // Leer la opción seleccionada
                     System.out.print("Seleccione una opción: ");
@@ -130,10 +137,37 @@ public class Cliente {
 
                             // Generar el PDF del ticket de compra en el directorio actual
                             carrito.generateInvoice(filePath);
+
+                            // Crear un arreglo de existencias a partir de la lista de productos
+                            int[] existenciasArray = new int[productos.size()];
+                            for (int i = 0; i < productos.size(); i++) {
+                                existenciasArray[i] = productos.get(i).getExistencias();
+                            }
+
+                            // enviar el arreglo de existencias al servidor
+                            try (ObjectOutputStream oos = new ObjectOutputStream(cl.getOutputStream())) {
+                                // Serializar el arreglo de existencias y enviarlo al servidor
+                                oos.writeObject(existenciasArray);
+                                System.out.println("Existencias enviadas al servidor correctamente.");
+                            } catch (IOException e) {
+                                // Manejar cualquier excepción que pueda ocurrir al enviar el arreglo al servidor
+                                e.printStackTrace();
+                            }
                             break;
                         case 6:
                             // Salir
                             System.out.println("Saliendo...\n");
+                            if (!carrito.isTicketGenerated()) {
+                                try (ObjectOutputStream oos = new ObjectOutputStream(cl.getOutputStream())) {
+                                    // Serializar el arreglo de existencias originales y enviarlo al servidor
+                                    oos.writeObject(existenciasOriginales);
+                                    System.out.println("Existencias originales enviadas al servidor correctamente.");
+                                } catch (IOException e) {
+                                    // Manejar cualquier excepción que pueda ocurrir al enviar el arreglo al servidor
+                                    e.printStackTrace();
+                                }
+                            }
+                            break;
                         default:
                             // Opción inválida
                             System.out.println("Opción inválida");

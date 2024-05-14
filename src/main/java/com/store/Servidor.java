@@ -36,14 +36,30 @@ public class Servidor {
                 OutputStream os = cl.getOutputStream();
                 os.write(baos.toByteArray());
                 os.flush();
+                
+                // Recibir lista de existencias restantes serializada del cliente
+                ObjectInputStream ois = new ObjectInputStream(cl.getInputStream());
+                int[] existenciasArray = (int[]) ois.readObject();
 
-                // Imprimir la lista
-                for (Product producto : productos) {
-                    System.out.println(producto);
+                // Imprimir la lista recibida
+                System.out.println("Existencias recibidas desde el cliente:");
+                for (int existencia : existenciasArray) {
+                    System.out.println(existencia);
                 }
+
+                // Actualizar el stock en la base de datos
+                for (int i = 0; i < existenciasArray.length; i++) {
+                int existencias = existenciasArray[i];
+                // Obtener el producto correspondiente a este índice
+                Product producto = productos.get(i);
+                // Actualizar el stock del producto en la base de datos
+                ApiCart.editarProducto(ConnectionDB.getConnection(), producto.getId(), producto.getNombre(), producto.getPrecio(), existencias, producto.getDescripcion());
+                }
+                System.out.println("Existencias Actualizadas en la BD");
 
                 // Cerrar conexiones y flujos
                 oos.close();
+                ois.close();
                 baos.close();
                 os.close();
                 cl.close();

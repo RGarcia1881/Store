@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ApiCart {
 
-    // Método para agregar un nuevo producto al carrito
+    // Método para agregar un nuevo producto a la tienda
     public static void agregarProducto(Connection connection, String nombre, double precio, int existencias,
             String descripcion)
             throws SQLException {
@@ -24,7 +24,7 @@ public class ApiCart {
         }
     }
 
-    // Método para editar un producto existente en el carrito
+    // Método para editar un producto existente en la tienda
     public static void editarProducto(Connection connection, int id, String nombre, double precio, int existencias,
             String descripcion)
             throws SQLException {
@@ -40,7 +40,7 @@ public class ApiCart {
         }
     }
 
-    // Método para eliminar un producto del carrito
+    // Método para eliminar un producto de la tienda
     public static void eliminarProducto(Connection connection, int id) throws SQLException {
         String sql = "DELETE FROM producto WHERE id = ?";
 
@@ -50,7 +50,7 @@ public class ApiCart {
         }
     }
 
-    // Método para obtener todos los productos del carrito
+    // Método para obtener todos los productos de la tienda
     public static List<Product> obtenerProductos(Connection connection) throws SQLException {
         List<Product> productos = new ArrayList<>();
         String sql = "SELECT id, nombre, descripcion, precio, existencias FROM producto";

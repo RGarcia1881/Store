@@ -9,7 +9,7 @@ public class ConnectionDB {
     // Datos de conexión a la base de datos
     private static final String URL = "jdbc:postgresql://localhost:5432/store";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "N0m3l0";
+    private static final String PASSWORD = "root";
 
     // Método para establecer la conexión con la base de datos
     public static Connection getConnection() throws SQLException {
