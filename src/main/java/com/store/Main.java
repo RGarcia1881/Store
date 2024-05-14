@@ -18,11 +18,11 @@ public class Main {
              System.out.println("Producto agregado con éxito"); */
              
 
-            /*
-             Editar un producto existente
-             ApiCart.editarProducto(connection, 3, "Producto 1 Editado", 15.75, 150);
-             System.out.println("Producto editado con éxito");
-             */
+            
+             /* Editar un producto existente
+             ApiCart.editarProducto(connection, 1, "Mango", 15.75, 150, "Mango manila fresco");
+             System.out.println("Producto editado con éxito"); */
+             
 
             /*
              Eliminar un producto

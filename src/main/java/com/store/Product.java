@@ -5,18 +5,20 @@ public class Product {
     private String nombre;
     private double precio;
     private int existencias;
+    private String descripcion;
 
-    public Product(int id, String nombre, double precio, int existencias) {
+    public Product(int id, String nombre,String descripcion, double precio, int existencias) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.existencias = existencias;
+        this.descripcion = descripcion;
     }
 
     // Getters y setters
     @Override
     public String toString() {
-        return "ID: " + id + ", Nombre: " + nombre + ", Precio: " + precio + ", Existencias: " + existencias;
+        return "ID: " + id + ", Nombre: " + nombre + ", Descripcion: " + descripcion + ", Precio: " + precio + ", Existencias: " + existencias;
     }
 }
 
