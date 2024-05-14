@@ -20,7 +20,7 @@ public class Cliente {
 
             // Establecer conexión con el servidor y recibimos mensajes
             try (Socket cl = new Socket(host, pto);
-                ObjectInputStream ois = new ObjectInputStream(cl.getInputStream())) {
+                    ObjectInputStream ois = new ObjectInputStream(cl.getInputStream())) {
 
                 // Recibir la lista serializada del servidor
                 Object obj = ois.readObject();

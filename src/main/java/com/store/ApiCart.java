@@ -10,20 +10,23 @@ import java.util.List;
 public class ApiCart {
 
     // Método para agregar un nuevo producto al carrito
-    public static void agregarProducto(Connection connection, String nombre, double precio, int existencias)
+    public static void agregarProducto(Connection connection, String nombre, double precio, int existencias,
+            String descripcion)
             throws SQLException {
-        String sql = "INSERT INTO producto (nombre, precio, existencias) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO producto (nombre, precio, existencias, descripcion) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, nombre);
             statement.setDouble(2, precio);
             statement.setInt(3, existencias);
+            statement.setString(4, descripcion);
             statement.executeUpdate();
         }
     }
 
     // Método para editar un producto existente en el carrito
-    public static void editarProducto(Connection connection, int id, String nombre, double precio, int existencias, String descripcion)
+    public static void editarProducto(Connection connection, int id, String nombre, double precio, int existencias,
+            String descripcion)
             throws SQLException {
         String sql = "UPDATE producto SET nombre = ?, precio = ?, existencias = ?, descripcion = ? WHERE id = ?";
 
