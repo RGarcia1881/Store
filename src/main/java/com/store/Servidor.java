@@ -42,36 +42,6 @@ public class Servidor {
                     System.out.println(producto);
                 }
 
-                // pw.println("Catalogo de productos:");
-                /*
-                 * for (Product producto :
-                 * ApiCart.obtenerProductos(ConnectionDB.getConnection())) {
-                 * pw.println(producto);
-                 * pw.flush();
-                 * }
-                 */
-
-                /*
-                 * // Definimos el mensaje a enviar y ligamos un Print Writer a un flujo de
-                 * salida
-                 * // de caracter.
-                 * String mensaje =
-                 * "García Bautista Luis Raúl - 6CV3 - Aplicaciones para Comunicaciones en Red";
-                 * PrintWriter pw = new PrintWriter(new
-                 * OutputStreamWriter(cl.getOutputStream()));
-                 * pw.println(mensaje);
-                 * pw.flush();
-                 * 
-                 * // Aquí agregamos la lectura de un mensaje del cliente
-                 * BufferedReader br = new BufferedReader(new
-                 * InputStreamReader(cl.getInputStream()));
-                 * String mensajeDelCliente = br.readLine(); // Lee el mensaje del cliente
-                 * 
-                 * // Imprime el echo del mensaje del cliente
-                 * System.out.println("Mensaje del cliente: " + mensajeDelCliente);
-                 * pw.println(mensajeDelCliente); // Hace echo del mensaje
-                 * pw.flush();
-                 */
                 // Cerrar conexiones y flujos
                 oos.close();
                 baos.close();
