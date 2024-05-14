@@ -30,7 +30,6 @@ public class Main {
              * ApiCart.eliminarProducto(connection, 3);
              * System.out.println("Producto eliminado con éxito");
              */
-
             /*
              * Ver todos los productos
              * List<Product> productos = ApiCart.obtenerProductos(connection);
@@ -42,6 +41,7 @@ public class Main {
              * }
              */
 
+            // Obtener un producto por ID
             System.out.println("Producto " + 1);
             int id = 2;
             Product producto = ApiCart.obtenerProducto(connection, id);
