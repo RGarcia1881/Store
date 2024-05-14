@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -127,7 +129,7 @@ public class Main {
          * System.out.println("Conexion cerrada");
          * scanner.close();
          * }
-         * }*/
+         */ }
     /*
      * #############################################################################
      * ###########
@@ -222,4 +224,17 @@ public class Main {
      * }
      * 
      */
-}}
+
+     // Método para generar el PDF del ticket de compra
+private static void generarPDFTicketCompra(Scanner scanner, Cart cart) {
+    // Obtener el directorio actual donde se encuentra el archivo que contiene el método main()
+    String currentDir = System.getProperty("user.dir");
+    
+    // Combinar el directorio actual con el nombre del archivo PDF del ticket de compra
+    String fileName = "ticket_de_compra.pdf";
+    String filePath = Paths.get(currentDir, fileName).toString();
+    
+    // Generar el PDF del ticket de compra en el directorio actual
+    cart.generateInvoice(filePath);
+}
+}

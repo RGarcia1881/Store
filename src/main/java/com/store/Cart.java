@@ -1,6 +1,13 @@
 package com.store;
 
 import java.util.ArrayList;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 public class Cart {
 
@@ -54,6 +61,27 @@ public class Cart {
         // Agrega el total al final de la cadena
         sb.append("Total: $").append(getTotal());
         return sb.toString();
+    }
+
+    // Método para generar un archivo PDF que represente un ticket de compra
+    public void generateInvoice(String filePath) {
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            // Agregar contenido al PDF
+            document.add(new Paragraph("Ticket de Compra"));
+            document.add(new Paragraph("------------------------------"));
+            for (Item item : items) {
+                document.add(new Paragraph(item.toString()));
+            }
+            document.add(new Paragraph("------------------------------"));
+            document.add(new Paragraph("Total: $" + getTotal()));
+            document.close();
+            System.out.println("Ticket de compra generado correctamente en: " + filePath);
+        } catch (DocumentException | FileNotFoundException e) {
+            System.out.println("Error al generar el ticket de compra: " + e.getMessage());
+        }
     }
 
 }
