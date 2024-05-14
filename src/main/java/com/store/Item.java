@@ -27,12 +27,12 @@ public class Item {
     }
 
     // Método para obtener la cantidad en stock del artículo
-    public int getCount() {
+    public int getStock() {
         return stock;
     }
 
     // Método para establecer la cantidad en stock del artículo
-    public void setCount(int count) {
+    public void setStock(int count) {
         this.stock = count;
     }
 
@@ -44,7 +44,8 @@ public class Item {
     // Método toString para devolver una representación de cadena del objeto Item
     @Override
     public String toString() {
-        // La representación incluye el nombre, precio, cantidad en stock y descripción del artículo
+        // La representación incluye el nombre, precio, cantidad en stock y descripción
+        // del artículo
         return name + " - $" + price + " x " + stock + " " + description;
     }
 

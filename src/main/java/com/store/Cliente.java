@@ -18,20 +18,32 @@ public class Cliente {
             int pto = Integer.parseInt(br1.readLine());
 
             // Establecer conexión con el servidor y recibimos mensajes
-            try (Socket cl = new Socket(host, pto);
-                    BufferedReader br2 = new BufferedReader(new InputStreamReader(cl.getInputStream()))) {
 
-                // Creamos variable para leer el mensaje del servidor
-                String mensaje;
+            //Termina de conectar esto con algo simple.
 
-                // Ciclo para leer los mensajes del servidor
-                while ((mensaje = br2.readLine()) != null) {
-                    System.out.println(mensaje);
-                }
+            Socket cl = new Socket(host, pto);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            cl.getInputStream()
+
+            /*
+             * try (Socket cl = new Socket(host, pto);
+             * BufferedReader br2 = new BufferedReader(new
+             * InputStreamReader(cl.getInputStream()))) {
+             * 
+             * // Creamos variable para leer el mensaje del servidor
+             * String mensaje;
+             * 
+             * // Ciclo para leer los mensajes del servidor
+             * while ((mensaje = br2.readLine()) != null) {
+             * System.out.println(mensaje);
+             * }
+             * 
+             * } catch (IOException e) {
+             * e.printStackTrace();
+             * }
+             */
+
+            // Hacemos el carrito de compra
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.store;
 
 import java.net.*;
+import java.util.List;
 import java.io.*;
 
 public class Servidor {
@@ -21,13 +22,25 @@ public class Servidor {
                 System.out.println("Conexión establecida desde " + cl.getInetAddress() + ":" + cl.getPort());
 
                 // Enviamos catalogo de productos al cliente
-                PrintWriter pw = new PrintWriter(new OutputStreamWriter(cl.getOutputStream()));
+                // PrintWriter pw = new PrintWriter(new
+                // OutputStreamWriter(cl.getOutputStream()));
+
+                // Aqui empieza la serializacion
+
+                List<Product> productos = ApiCart.obtenerProductos(ConnectionDB.getConnection());
+
+                for (Product producto : productos) {
+                    System.out.println(producto);
+                }
 
                 // pw.println("Catalogo de productos:");
-                for (Product producto : ApiCart.obtenerProductos(ConnectionDB.getConnection())) {
-                    pw.println(producto);
-                    pw.flush();
-                }
+                /*
+                 * for (Product producto :
+                 * ApiCart.obtenerProductos(ConnectionDB.getConnection())) {
+                 * pw.println(producto);
+                 * pw.flush();
+                 * }
+                 */
 
                 /*
                  * // Definimos el mensaje a enviar y ligamos un Print Writer a un flujo de

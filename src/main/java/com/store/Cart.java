@@ -33,7 +33,7 @@ public class Cart {
         double total = 0;
         // Itera sobre todos los ítems en el carrito y calcula el total
         for (Item item : items) {
-            total += item.getPrice() * item.getCount();
+            total += item.getPrice() * item.getStock();
         }
         return total;
     }
