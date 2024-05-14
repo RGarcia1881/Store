@@ -4,12 +4,14 @@ public class Item {
 
     private String name;
     private double price;
-    private int count;
+    private int stock;
+    private String description;
 
-    public Item(String name, double price, int count) {
+    public Item(String name, double price, int stock, String description) {
         this.name = name;
         this.price = price;
-        this.count = count;
+        this.stock = stock;
+        this.description = description;
     }
 
     public String getName() {
@@ -21,16 +23,20 @@ public class Item {
     }
 
     public int getCount() {
-        return count;
+        return stock;
     }
 
     public void setCount(int count) {
-        this.count = count;
+        this.stock = count;
+    }
+
+    public String getDesciption() {
+        return description;
     }
 
     @Override
     public String toString() {
-        return name + " - $" + price + " x " + count;
+        return name + " - $" + price + " x " + stock + description;
     }
 
 }
