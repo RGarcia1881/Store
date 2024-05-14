@@ -14,10 +14,12 @@ public class Main {
             System.out.println("Conexion exitosa a la base de datos");
 
             // Agregar un nuevo producto
-            ApiCart.agregarProducto(connection, "Producto 1", 10.50, 100);
-            System.out.println("Producto agregado con éxito");
-            ApiCart.agregarProducto(connection, "Producto 2", 13.50, 50);
-            System.out.println("Producto agregado con éxito");
+            /*
+             * ApiCart.agregarProducto(connection, "Producto 1", 10.50, 100);
+             * System.out.println("Producto agregado con éxito");
+             * ApiCart.agregarProducto(connection, "Producto 2", 13.50, 50);
+             * System.out.println("Producto agregado con éxito");
+             */
 
             /*
              * Editar un producto existente

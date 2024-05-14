@@ -23,14 +23,11 @@ public class Servidor {
                 // Enviamos catalogo de productos al cliente
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(cl.getOutputStream()));
 
-                pw.println("Catalogo de productos:");
-                pw.flush();
-
-                /*
-                 * ApiCart.obtenerProductos(ConnectionDB.getConnection()).forEach(producto -> {
-                 * pw.println(producto);
-                 * });
-                 */
+                // pw.println("Catalogo de productos:");
+                for (Product producto : ApiCart.obtenerProductos(ConnectionDB.getConnection())) {
+                    pw.println(producto);
+                    pw.flush();
+                }
 
                 /*
                  * // Definimos el mensaje a enviar y ligamos un Print Writer a un flujo de

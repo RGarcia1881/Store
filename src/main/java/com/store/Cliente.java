@@ -3,6 +3,8 @@ package com.store;
 import java.io.*;
 import java.net.*;
 
+//172.100.64.82
+
 public class Cliente {
 
     public static void main(String[] args) {
@@ -27,8 +29,10 @@ public class Cliente {
 
             // Almacenamos el mensaje y lo mostramos.
             String mensaje = br2.readLine();
-            System.out.println("Recibimos un mensaje desde el servidor");
-            System.out.println("Mensaje: " + mensaje);
+
+            for (br2.readLine(); mensaje != null; mensaje = br2.readLine()) {
+                System.out.println(mensaje);
+            }
 
             /*
              * // Generamos la variable donde el cliente escribira su mensaje.
