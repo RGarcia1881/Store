@@ -8,6 +8,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 
 public class Cart {
 
@@ -79,6 +82,11 @@ public class Cart {
             // Agregar contenido al PDF
             document.add(new Paragraph("Ticket de Compra"));
             document.add(new Paragraph("------------------------------"));
+            // Agregar la fecha y hora actual
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String dateTime = dateFormat.format(new Date());
+            document.add(new Paragraph("Fecha y hora: " + dateTime));
+            document.add(new Paragraph("------------------------------"));
             for (Item item : items) {
                 document.add(new Paragraph(item.toString()));
             }
@@ -86,6 +94,8 @@ public class Cart {
             document.add(new Paragraph("Total: $" + getTotal()));
             document.close();
             System.out.println("Ticket de compra generado correctamente en: " + filePath);
+            // Establecer el atributo ticketGenerated como true después de generar el ticket
+            ticketGenerated = true;
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println("Error al generar el ticket de compra: " + e.getMessage());
         }
