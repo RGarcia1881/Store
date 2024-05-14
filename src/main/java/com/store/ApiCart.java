@@ -23,15 +23,16 @@ public class ApiCart {
     }
 
     // Método para editar un producto existente en el carrito
-    public static void editarProducto(Connection connection, int id, String nombre, double precio, int existencias)
+    public static void editarProducto(Connection connection, int id, String nombre, double precio, int existencias, String descripcion)
             throws SQLException {
-        String sql = "UPDATE producto SET nombre = ?, precio = ?, existencias = ? WHERE id = ?";
+        String sql = "UPDATE producto SET nombre = ?, precio = ?, existencias = ?, descripcion = ? WHERE id = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, nombre);
             statement.setDouble(2, precio);
             statement.setInt(3, existencias);
-            statement.setInt(4, id);
+            statement.setString(4, descripcion);
+            statement.setInt(5, id);
             statement.executeUpdate();
         }
     }
@@ -49,16 +50,17 @@ public class ApiCart {
     // Método para obtener todos los productos del carrito
     public static List<Product> obtenerProductos(Connection connection) throws SQLException {
         List<Product> productos = new ArrayList<>();
-        String sql = "SELECT id, nombre, precio, existencias FROM producto";
+        String sql = "SELECT id, nombre, descripcion, precio, existencias FROM producto";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nombre = resultSet.getString("nombre");
+                String descripcion = resultSet.getString("descripcion");
                 double precio = resultSet.getDouble("precio");
                 int existencias = resultSet.getInt("existencias");
-                Product producto = new Product(id, nombre, precio, existencias);
+                Product producto = new Product(id, nombre, descripcion, precio, existencias);
                 productos.add(producto);
             }
         }
@@ -73,9 +75,10 @@ public class ApiCart {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
+                String descripcion = resultSet.getString("descripcion");
                 double precio = resultSet.getDouble("precio");
                 int existencias = resultSet.getInt("existencias");
-                return new Product(id, nombre, precio, existencias);
+                return new Product(id, nombre, descripcion, precio, existencias);
             }
         }
         return null;
