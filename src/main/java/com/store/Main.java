@@ -14,12 +14,15 @@ public class Main {
             System.out.println("Conexion exitosa a la base de datos");
 
             // Agregar un nuevo producto
-            /*
-             * ApiCart.agregarProducto(connection, "Producto 1", 10.50, 100);
-             * System.out.println("Producto agregado con éxito");
-             * ApiCart.agregarProducto(connection, "Producto 2", 13.50, 50);
-             * System.out.println("Producto agregado con éxito");
-             */
+             ApiCart.agregarProducto(connection, "Mango", 10.50, 100);
+             System.out.println("Producto agregado con éxito");
+             ApiCart.agregarProducto(connection, "Platano", 13.50, 50);
+             System.out.println("Producto agregado con éxito");
+             ApiCart.agregarProducto(connection, "Aguacate", 5.50, 50);
+             System.out.println("Producto agregado con éxito");
+             ApiCart.agregarProducto(connection, "Doritos", 18.00, 200);
+             System.out.println("Producto agregado con éxito");
+             
 
             /*
              * Editar un producto existente
@@ -32,16 +35,14 @@ public class Main {
              * ApiCart.eliminarProducto(connection, 3);
              * System.out.println("Producto eliminado con éxito");
              */
-            /*
-             * Ver todos los productos
-             * List<Product> productos = ApiCart.obtenerProductos(connection);
-             * 
-             * System.out.println("Lista de productos:");
-             * 
-             * for (Product producto : productos) {
-             * System.out.println(producto);
-             * }
-             */
+            
+             // Ver todos los productos
+             List<Product> productos = ApiCart.obtenerProductos(connection);
+             System.out.println("Lista de productos:");
+             for (Product producto : productos) {
+             System.out.println(producto);
+             }
+             
 
             // Obtener un producto por ID
             System.out.println("Producto " + 1);
