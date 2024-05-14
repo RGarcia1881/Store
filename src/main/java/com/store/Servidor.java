@@ -10,7 +10,7 @@ public class Servidor {
         // Generamos el try cathc en caso de error.
         try {
 
-            // Creamos el socket y lo ligamos al puerto 1234.
+            // Creamos el socket y lo ligamos al puerto 6030.
             ServerSocket s = new ServerSocket(6030);
             System.out.println("Esperando cliente ...");
 
